@@ -7,19 +7,19 @@ from string import digits as _str_digits, ascii_lowercase as _str_lower, ascii_u
 
 class FakeIdentity:
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._first_name = None
         self._last_name = None
         self._e_mail = None
         self._password = None
 
-    def _generate_first_name(self):
+    def _generate_first_name(self) -> None:
         self._first_name = _names_first()
 
-    def _generate_last_name(self):
+    def _generate_last_name(self) -> None:
         self._last_name = _names_last()
 
-    def _generate_e_mail(self):
+    def _generate_e_mail(self) -> None:
         if self._first_name is None:
             self._generate_first_name()
         if self._last_name is None:
@@ -46,7 +46,7 @@ class FakeIdentity:
                 e_mail = self._first_name + '@' + self._last_name + '.' + domain
         self._e_mail = e_mail
 
-    def _generate_password(self):
+    def _generate_password(self) -> None:
         rand = _rand_choices(['random'], [1])[0]
         password = ''  # noqa
         match rand:
@@ -69,29 +69,29 @@ class FakeIdentity:
                     password += _rand_choices(characters)
         self._password = password
 
-    def first_name(self):
+    def first_name(self) -> str:
         if self._first_name is None:
             self._generate_first_name()
         return self._first_name
 
-    def last_name(self):
+    def last_name(self) -> str:
         if self._last_name is None:
             self._generate_last_name()
         return self._last_name
 
-    def name(self):
+    def name(self) -> str:
         if self._first_name is None:
             self._generate_first_name()
         if self._last_name is None:
             self._generate_last_name()
         return self._first_name + ' ' + self._last_name
 
-    def e_mail(self):
+    def e_mail(self) -> str:
         if self._e_mail is None:
             self._generate_e_mail()
         return self._e_mail
 
-    def password(self):
+    def password(self) -> str:
         if self._password is None:
             self._generate_password()
         return self._password
