@@ -8,18 +8,33 @@ from string import digits as _str_digits, ascii_lowercase as _str_lower, ascii_u
 class FakeIdentity:
 
     def __init__(self) -> None:
+        """
+        Create a new fake identity. Details are only generated if needed.
+        """
         self._first_name = None
         self._last_name = None
         self._e_mail = None
         self._password = None
 
     def _generate_first_name(self) -> None:
+        """
+        Generate the first name using the 'names' package.
+        :return: None
+        """
         self._first_name = _names_first()
 
     def _generate_last_name(self) -> None:
+        """
+        Generate the last name using the 'names' package.
+        :return: None
+        """
         self._last_name = _names_last()
 
     def _generate_e_mail(self) -> None:
+        """
+        Generate a random e-mail address based on the name.
+        :return: None
+        """
         if self._first_name is None:
             self._generate_first_name()
         if self._last_name is None:
@@ -47,6 +62,10 @@ class FakeIdentity:
         self._e_mail = e_mail
 
     def _generate_password(self) -> None:
+        """
+        Generate a random password.
+        :return: None
+        """
         rand = _rand_choices(['random'], [1])[0]
         password = ''  # noqa
         match rand:
@@ -70,16 +89,28 @@ class FakeIdentity:
         self._password = password
 
     def first_name(self) -> str:
+        """
+        Get the first name, which is randomly selected by the 'names' package.
+        :return: The first name
+        """
         if self._first_name is None:
             self._generate_first_name()
         return self._first_name
 
     def last_name(self) -> str:
+        """
+        Get the last name, which is randomly selected by the 'names' package.
+        :return: The last name
+        """
         if self._last_name is None:
             self._generate_last_name()
         return self._last_name
 
     def name(self) -> str:
+        """
+        Get the full name, which is randomly selected by the 'names' package.
+        :return: The full name
+        """
         if self._first_name is None:
             self._generate_first_name()
         if self._last_name is None:
@@ -87,11 +118,19 @@ class FakeIdentity:
         return self._first_name + ' ' + self._last_name
 
     def e_mail(self) -> str:
+        """
+        Get a generated E-Mail address based on the full name.
+        :return: An (hopefully non-existant) E-Mail address
+        """
         if self._e_mail is None:
             self._generate_e_mail()
         return self._e_mail
 
     def password(self) -> str:
+        """
+        Get a random password.
+        :return: A random password.
+        """
         if self._password is None:
             self._generate_password()
         return self._password
