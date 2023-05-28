@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phishing-baiter"
+version = "0.0.0"
+authors = [
+  { name="Martin Merkli", email="martin.merkli@protonmail.com" },
+]
+description = "Library for flooding phishing sites with fake data"
+readme = "README.md"
+license = { text = "MIT License" }
+requires-python = ">=3.6"
+keywords = ['python', 'phishing', 'phishing baiter', 'fake']
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Other Audience",
+    "Topic :: Internet"
+]
+
+[project.urls]
+homepage = "https://github.com/MartinMerkli/phishing-baiter"
+repository = "https://github.com/MartinMerkli/phishin-baiter"
