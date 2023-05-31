@@ -26,3 +26,27 @@ def rand_choice(data) -> any:
             if isinstance(data[i], tuple):
                 return data[i][0]
             return data[i]
+
+
+def combine(a: any, b: any) -> any:
+    """
+    Combines two objects of the same type. Currently implemented are: list, set, dict, tuple.
+    :param a: an object
+    :param b: an object of the same type as 'a'
+    :return: a combined with b
+    """
+    if type(a) != type(b):
+        raise NotImplementedError
+    if isinstance(a, list):
+        r = a.copy()
+        r.extend(b)
+    elif isinstance(a, set):
+        r = a.union(b)
+    elif isinstance(a, dict):
+        r = a.copy()
+        r.update(b)
+    elif isinstance(a, tuple):
+        r = a + b
+    else:
+        raise NotImplementedError
+    return r
