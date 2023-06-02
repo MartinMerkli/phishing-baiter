@@ -35,9 +35,11 @@ def combine(a: any, b: any) -> any:
     :param b: an object of the same type as 'a'
     :return: a combined with b
     """
-    if type(a) != type(b):
+    if b is None:
+        return a
+    elif type(a) != type(b):
         raise NotImplementedError
-    if isinstance(a, list):
+    elif isinstance(a, list):
         r = a.copy()
         r.extend(b)
     elif isinstance(a, set):
