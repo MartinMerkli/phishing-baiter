@@ -1,4 +1,5 @@
-from .data import E_MAIL_PROVIDERS as _E_MAIL_PROVIDERS, E_MAIL_PROVIDERS_W as _E_MAIL_PROVIDERS_W
+from .data import get_data
+from .utils import rand_choice as _rand_choice
 from names import get_last_name as _names_last, get_first_name as _names_first
 from random import choices as _rand_choices, randint as _rand_int
 from string import digits as _str_digits, ascii_lowercase as _str_lower, ascii_uppercase as _str_upper, \
@@ -39,7 +40,7 @@ class FakeIdentity:
             self._generate_first_name()
         if self._last_name is None:
             self._generate_last_name()
-        provider = '@' + _rand_choices(_E_MAIL_PROVIDERS, _E_MAIL_PROVIDERS_W)[0]
+        provider = '@' + _rand_choice(get_data('email', 'int'))
         rand = _rand_choices(['first_last', 'first.last', 'last.first', 'firstlast', 'firstlast123', 'last',
                               'first@last'], [1, 1, 1, 1, 0.5, 0.2, 0.1])[0]
         e_mail = ''
